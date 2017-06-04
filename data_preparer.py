@@ -21,5 +21,12 @@ def main():
 	print("Length of Topic %d" % len(dfTopic))
 	print("Length of Test set %d" % len(dfTest))
 
+	#
+	dfTrain['tids'] = dfLabel['tids']
+	print dfTrain.head()
+
+	# dfAll = pd.concat((dfTrain, dfTest))
+
+
 if __name__ == "__main__":
 	main()
