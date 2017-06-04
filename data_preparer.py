@@ -12,9 +12,9 @@ from utils import help_function
 
 def main():
 	dfLabel = pd.read_csv(config.TRAIN_DATA_LABEL, sep='\t', names=['qid', 'tids'])
-	dfTrain = pd.read_csv(config.TRAIN_DATA, sep='\t', names=['qid', 'chars', 'words'])
-	dfTest = pd.read_csv(config.TEST_DATA, sep='\t', names=['qid', 'chars', 'words'])
-	dfTopic = pd.read_csv(config.TOPIC_DATA, sep='\t', names=['tid', 'ptids', 'title_chars', 'title_words', 'desc_chars', 'desc_words'])
+	dfTrain = pd.read_csv(config.TRAIN_DATA, sep='\t', names=['qid', 'q_title_chars', 'q_title_words', 'q_desc_chars', 'q_desc_words'])
+	dfTest = pd.read_csv(config.TEST_DATA, sep='\t', names=['qid', 'q_title_chars', 'q_title_words', 'q_desc_chars', 'q_desc_words'])
+	dfTopic = pd.read_csv(config.TOPIC_DATA, sep='\t', names=['tid', 'ptids', 't_title_chars', 't_title_words', 't_desc_chars', 't_desc_words'])
 	dfCharsEmbeddings = pd.read_csv(config.CHAR_EMBEDDING, sep='\t', names=['cid', 'embeddings'])
 	dfWordsEmbeddings = pd.read_csv(config.WORD_EMBEDDING, sep='\t', names=['wid', 'embeddings'])
 
@@ -28,7 +28,7 @@ def main():
 	dfTrain['tids'] = dfTrain['tids'].str.split(',')
 	df = help_function.pandas_explode(dfTrain, 'tids')
 	df.fillna(value="", inplace=True)
-	
+
 
 	print("Length of explode Train set %d" % len(df))
 	dfAll = pd.concat((df, dfTest))
