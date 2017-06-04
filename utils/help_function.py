@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+import pandas
+import copy
+
 
 def pandas_explode(df, column_to_explode):
     """
