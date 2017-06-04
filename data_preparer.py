@@ -7,6 +7,8 @@ import pandas as pd
 
 import config
 from utils import pkl_utils
+from utils import help_function
+
 
 def main():
 	dfLabel = pd.read_csv(config.TRAIN_DATA_LABEL, sep='\t', names=['qid', 'tids'])
@@ -22,8 +24,13 @@ def main():
 	print("Length of Test set %d" % len(dfTest))
 
 	#
-	dfTrain['tids'] = dfLabel['tids']
-	print dfTrain.head()
+	dfTrain['tids'] = dfTrain['tids'].str.split(',')
+	df = help_function.pandas_explode(dfTrain, 'tids')
+
+	#dfTrain['tids'] = dfLabel['tids'].values
+	# convert into 
+
+	print df.head()
 
 	# dfAll = pd.concat((dfTrain, dfTest))
 
