@@ -24,6 +24,7 @@ def main():
 	print("Length of Test set %d" % len(dfTest))
 
 	#
+	dfTrain['tids'] = dfLabel['tids'].values
 	dfTrain['tids'] = dfTrain['tids'].str.split(',')
 	df = help_function.pandas_explode(dfTrain, 'tids')
 
