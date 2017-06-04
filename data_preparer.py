@@ -27,11 +27,11 @@ def main():
 	dfTrain['tids'] = dfLabel['tids'].values
 	dfTrain['tids'] = dfTrain['tids'].str.split(',')
 	df = help_function.pandas_explode(dfTrain, 'tids')
-	dfTrain.fillna(value="", inplace=True)
+	df.fillna(value="", inplace=True)
 	
 
-	print("Length of explode Train set %d" % len(dfTrain))
-	dfAll = pd.concat((dfTrain, dfTest))
+	print("Length of explode Train set %d" % len(df))
+	dfAll = pd.concat((df, dfTest))
 
 	print df.head()
 
