@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # ------------------------ PATH ------------------------
-ROOT_DIR = "../.."
+ROOT_DIR = "../"
 
 DATA_DIR = "%s/Data"%ROOT_DIR
 CLEAN_DATA_DIR = "%s/Clean"%DATA_DIR
