@@ -23,13 +23,15 @@ def main():
 	print("Length of Topic %d" % len(dfTopic))
 	print("Length of Test set %d" % len(dfTest))
 
-	#
+	# expload labels
 	dfTrain['tids'] = dfLabel['tids'].values
 	dfTrain['tids'] = dfTrain['tids'].str.split(',')
 	df = help_function.pandas_explode(dfTrain, 'tids')
+	dfTrain.fillna(value="", inplace=True)
+	
 
-	#dfTrain['tids'] = dfLabel['tids'].values
-	# convert into 
+	print("Length of explode Train set %d" % len(dfTrain))
+	dfAll = pd.concat((dfTrain, dfTest))
 
 	print df.head()
 
